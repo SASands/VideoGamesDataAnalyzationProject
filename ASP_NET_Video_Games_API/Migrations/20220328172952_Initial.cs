@@ -3,6 +3,9 @@
 #nullable disable
 
 namespace ASP_NET_Video_Games_API.Migrations
+
+    //This initial migration creates the database, then creates the table and seeds the data(Video Games) into the table
+
 {
     public partial class Initial : Migration
     {
