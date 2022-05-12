@@ -16,7 +16,7 @@ namespace ASP_NET_Video_Games_API.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet("publisher/{Publisher}")]
         public IActionResult GetPublishers()
         {
             var videoGamePublishers = _context.VideoGames.Select(vg => vg.Publisher).Distinct();
@@ -24,22 +24,27 @@ namespace ASP_NET_Video_Games_API.Controllers
             return Ok(videoGamePublishers);
         }
 
-        [HttpGet("{pubName}")]
+        [HttpGet("pubname/{pubName}")]
         public IActionResult GetGamesByPublisher(string pubName)
         {
-           // int? maxYear = _context.VideoGames.Select(vg => vg.Year).Max();
-           // int? minYear = _context.VideoGames.Select(vg => vg.Year).Min();
+            // int? maxYear = _context.VideoGames.Select(vg => vg.Year).Max();
+            // int? minYear = _context.VideoGames.Select(vg => vg.Year).Min();
 
             var videoGames = _context.VideoGames.Where(vg => vg.Publisher == pubName);
             return Ok(videoGames);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetGamesById(string id)
+        [HttpGet("id/{id}")]
+        public IActionResult GetGamesById(int id)
         {
-            var videoGames = _context.VideoGames.Where(vg => vg.Id == id);
-            return Ok(videoGames);
+            
+            var GamesById = _context.VideoGames.Where(vg => vg.Id == id);
+            return Ok(GamesById);        
         }
+
+
+
+
 
 
     }
